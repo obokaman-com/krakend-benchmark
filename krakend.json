@@ -1,0 +1,28 @@
+{
+  "$schema": "https://www.krakend.io/schema/krakend.json",
+  "version": 3,
+  "timeout": "3000ms",
+  "cache_ttl": "300s",
+  "host": ["http://localhost:8080/"],
+  "endpoints": [
+    {
+      "endpoint": "/test",
+      "backend": [
+        {
+          "url_pattern": "/__health"
+        }
+      ]
+    }
+  ],
+  "extra_config": {
+    "telemetry/logging": {
+      "level": "CRITICAL",
+      "syslog": false,
+      "stdout": false
+    },
+    "router": {
+      "disable_access_log": true,
+      "disable_path_decoding": true
+    }
+  }
+}
